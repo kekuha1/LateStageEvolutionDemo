@@ -1,34 +1,21 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
-const blogPostSchema = new mongoose.Schema(
-  {
-    image: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    contentOne: {
-      type: String,
-      required: true,
-    },
-    contentTwo: {
-      type: String,
-    },
-    author: {
-      type: String,
-      required: true,
-    },
-    category: {
-      type: String,
-      required: true,
-    },
+const userSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true,
   },
-  { timestamps: true }
-);
+  password: {
+    type: String,
+    required: true,
+  },
+});
 
-const BlogPost = mongoose.model("BlogPost", blogPostSchema);
+userSchema.methods.matchPasswords = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 
-export default BlogPost;
+const User = mongoose.model("User", userSchema);
+export default User;
