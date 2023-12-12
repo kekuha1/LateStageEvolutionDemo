@@ -11,6 +11,7 @@
   "author": "Brian",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^8.2.2",
     "dotenv": "^16.3.1",
