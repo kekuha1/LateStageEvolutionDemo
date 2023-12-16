@@ -3,6 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import BlogScreen from "./screens/BlogScreen";
 import SingleBlogScreen from "./screens/SingleBlogScreen";
+import ContactScreen from "./screens/ContactScreen";
+import AboutScreen from "./screens/AboutScreen";
+import HomeScreen from "./screens/HomeScreen";
+import LoginScreen from "./screens/LoginScreen";
+import AdminScreen from "./screens/AdminScreen";
 
 const App = () => {
   return (
@@ -13,6 +18,11 @@ const App = () => {
           <Routes>
             <Route path="/blog/:category" element={<BlogScreen />}></Route>
             <Route path="/:id" element={<SingleBlogScreen />}></Route>
+            <Route path="/contact" element={<ContactScreen />}></Route>
+            <Route path="/login" element={<LoginScreen />}></Route>
+            <Route path="/admin-console" element={<AdminScreen />}></Route>
+            <Route path="/about" element={<AboutScreen />}></Route>
+            <Route path="/" element={<HomeScreen />}></Route>
           </Routes>
         </main>
       </Router>
