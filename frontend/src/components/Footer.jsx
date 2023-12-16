@@ -47,7 +47,7 @@ const Footer = () => {
             <Flex alignItems="center">
               <Icon as={GiCaveman} h="10" w="10" />
               <Text fontSize="2xl" fontWeight="extrabold">
-                Late State Evolution
+                Late Stage Evolution
               </Text>
             </Flex>
           </Stack>
@@ -69,7 +69,7 @@ const Footer = () => {
             </Stack>
             <Stack spacing="4">
               <Text fontSize="sm" fontWeight="semibold" color="subtle">
-                Stay up to date
+                Stay Up To Date!
               </Text>
               <Stack
                 spacing="4"
@@ -78,7 +78,7 @@ const Footer = () => {
               >
                 <Input placeholder="Enter your email" type="email" required />
                 <Button variant="primary" type="submit" flexShrink={0}>
-                  Suscribe
+                  Subscribe
                 </Button>
               </Stack>
               {userInfo ? (

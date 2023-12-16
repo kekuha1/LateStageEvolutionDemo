@@ -86,8 +86,8 @@ const HomeScreen = () => (
       </Box>
       <Flex flex="1" overflow="hidden">
         <Image
-          src="/images/evolution.jpg"
-          alt="Lovely Image"
+          src="/images/Evolution.jpg"
+          alt="Evolution Image"
           maxH="1000px"
           minW="300px"
           objectFit="cover"
