@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import {
   Stack,
   Text,
@@ -14,16 +14,16 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
-} from '@chakra-ui/react';
-import ImageUpload from './ImageUpload';
-import { createNewBlogPost } from '../redux/actions/blogPostActions';
+} from "@chakra-ui/react";
+import ImageUpload from "./ImageUpload";
+import { createNewBlogPost } from "../redux/actions/blogPostActions";
 
 const NewPostTab = () => {
-  const [postImage, setPostImage] = useState('');
-  const [postContentOne, setPostContentOne] = useState('');
-  const [postContentTwo, setPostContentTwo] = useState('');
-  const [postTitle, setPostTitle] = useState('');
-  const [postCategory, setPostCategory] = useState('');
+  const [postImage, setPostImage] = useState("");
+  const [postContentOne, setPostContentOne] = useState("");
+  const [postContentTwo, setPostContentTwo] = useState("");
+  const [postTitle, setPostTitle] = useState("");
+  const [postCategory, setPostCategory] = useState("");
   const toast = useToast();
   const dispatch = useDispatch();
 
@@ -33,21 +33,35 @@ const NewPostTab = () => {
   useEffect(() => {
     if (blogPostCreated) {
       toast({
-        title: 'Blog post published',
-        description: 'Check out your blog section to see your new post.',
-        status: 'success',
+        title: "Blog post published",
+        description: "Check out your blog section to see your new post.",
+        status: "success",
         duration: 7000,
         isClosable: true,
       });
     }
-  }, [postImage, postContentOne, postContentTwo, postTitle, postCategory, blogPostCreated]);
+  }, [
+    postImage,
+    postContentOne,
+    postContentTwo,
+    postTitle,
+    postCategory,
+    blogPostCreated,
+  ]);
 
   const handlePublishPost = () => {
-    if (postImage === '' || postCategory === '' || postContentOne === '' || postContentTwo === '' || postTitle === '') {
+    if (
+      postImage === "" ||
+      postCategory === "" ||
+      postContentOne === "" ||
+      postContentTwo === "" ||
+      postTitle === ""
+    ) {
       toast({
-        title: 'Post could not be published',
-        description: 'Please fill out all fields and make sure that you have provided an image.',
-        status: 'error',
+        title: "Post could not be published",
+        description:
+          "Please fill out all fields and make sure that you have provided an image.",
+        status: "error",
         duration: 9000,
         isClosable: true,
       });
@@ -65,33 +79,58 @@ const NewPostTab = () => {
   };
 
   return (
-    <Container maxW='5xl' py={{ base: 12, md: 24 }} px={{ base: 0, md: 8 }} minH='4xl'>
-      <Stack spacing='5'>
+    <Container
+      maxW="5xl"
+      py={{ base: 12, md: 24 }}
+      px={{ base: 0, md: 8 }}
+      minH="4xl"
+    >
+      <Stack spacing="5">
         <Text>Create new Blog</Text>
-        <Input placeholder='Title' size='lg' onChange={(e) => setPostTitle(e.target.value)} />
-        <Select placeholder='Choose a Category' size='lg' onChange={(e) => setPostCategory(e.target.value)}>
-          <option value='Fitness'>Fitness</option>
-          <option value='Mental Health'>Mental Health</option>
-          <option value='Career'>Career</option>
-          <option value='Family'>Family</option>
-          <option value='Africa'>Africa</option>
+        <Input
+          placeholder="Title"
+          size="lg"
+          onChange={(e) => setPostTitle(e.target.value)}
+        />
+        <Select
+          placeholder="Choose a Category"
+          size="lg"
+          onChange={(e) => setPostCategory(e.target.value)}
+        >
+          <option value="Fitness">Fitness</option>
+          <option value="Mental Health">Mental Health</option>
+          <option value="Career">Career</option>
+          <option value="Family">Family</option>
+          <option value="Africa">Other</option>
         </Select>
-        <Textarea placeholder='Blog Content Part One' onChange={(e) => setPostContentOne(e.target.value)} />
-        <Textarea placeholder='Blog Content Part Two' onChange={(e) => setPostContentTwo(e.target.value)} />
+        <Textarea
+          placeholder="Blog Content Part One"
+          onChange={(e) => setPostContentOne(e.target.value)}
+        />
+        <Textarea
+          placeholder="Blog Content Part Two"
+          onChange={(e) => setPostContentTwo(e.target.value)}
+        />
         <ImageUpload setPostImage={setPostImage} />
-        <Image src={postImage} minW={{ lg: '400px' }} maxH='280px' fit='contain' />
+        <Image
+          src={postImage}
+          minW={{ lg: "400px" }}
+          maxH="280px"
+          fit="contain"
+        />
         {error && (
-          <Alert status='error'>
+          <Alert status="error">
             <AlertIcon />
             <AlertTitle>We are sorry</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
         <Button
-          colorScheme='blue'
+          colorScheme="blue"
           onClick={() => handlePublishPost()}
           isLoading={updateButtonLoading}
-          loadingText='Uploading'>
+          loadingText="Uploading"
+        >
           Publish Post
         </Button>
       </Stack>

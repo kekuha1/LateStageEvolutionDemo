@@ -89,7 +89,7 @@ const HomeScreen = () => (
           src="/images/Evolution.jpg"
           alt="Evolution Image"
           maxH="1000px"
-          minW="300px"
+          maxW="750px"
           objectFit="cover"
           flex="1"
         />
